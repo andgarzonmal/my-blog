@@ -1,5 +1,5 @@
 <div id="page-content">
-  <h1 class='text-center mt-4'>listing All Articles</h1>
+  <h1 class='text-center mt-4'>Listing All Articles</h1>
 
   <div class="container">
     <% @articles.each do |article|%>
@@ -33,35 +33,3 @@
     <% end %>
   </div>
 </div>
-
-
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Description</th>
-      <th colspan="3">Actions</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @articles.each do |article|%>
-      <tr>
-        <td><%= article.title%></td>
-        <td><%= article.description%></td>
-        <td><%= link_to 'Show', article_path(article) %>
-        </td> 
-        <td><%= link_to 'Delete', article_path(article), data: {
-                    turbo_method: :delete,
-                    turbo_confirm: "Are you sure?"
-                    } %>
-        </td>
-        <td><%= link_to 'update', edit_article_path(article), data: {
-                    turbo_method: :update,
-                    } %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table> 
-
-<%= link_to 'Add new', new_article_path%>
