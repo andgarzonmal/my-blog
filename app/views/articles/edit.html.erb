@@ -1,28 +1,44 @@
-<h1> Edit article</h1>
+<div id="page-content">
+  <div class="container">
+    <h1 class='text-center mt-4'> Edit article</h1>
+    <div class="row justify-content-center">
+      <div class="col-10">
+        <% if @article.errors.any? %>
+          <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <h4 class="alert-heading">The following article was not saved because of the following errors:</h4>
+            <ul>
+              <% @article.errors.full_messages.each do |msg|%>
+                <li>
+                  <%= msg %>
+                </li>
+              <% end %>
+            </ul>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+        <% end %>
+        <%= form_with(model: @article, local: true, class: "shadow-lg p-3 mb-3 bg-info rounded", data: { turbo: false } ) do |f|%>
+          <div class="form-group row">
+            <%= f.label :title, class: "col-2 col-form-label text-light" %>
+            <div class="col-10">
+              <%= f.text_field :title, class: "form-control shadow rounded mb-3", placeholder: "Title of article" %>
+            </div>
+          </div>
 
-<% if @article.errors.any? %>
-  <h2>The following article was not updated because of the following errors:</h2>
-  <ul>
-    <% @article.errors.full_messages.each do |msg|%>
-      <li>
-        <%= msg %>
-      </li>
-    <% end %>
-  </ul>
-<% end %>
-<%= form_with(model: @article, local: true, data: { turbo: false } ) do |f|%>
-  <p>
-    <%= f.label :title%><br/>
-    <%= f.text_field :title%>
-  </p>
+          <div class="form-group row">
+            <%= f.label :description, class: "col-2 col-form-label text-light"%>
+            <div class="col-10">
+              <%= f.text_area :description, rows: 10, class: "form-control", placeholder: "Description of article"%>
+            </div>
+          </div>
 
-  <p>
-    <%= f.label :description%><br/>
-    <%= f.text_area :description%>
-  </p>
-
-  <p>
-    <%= f.submit%><br/>
-  </p>
-<% end %>
-<%= link_to 'Cancel and return to articles listing', articles_path %>
+          <div class="justify-content-center btn-conta">
+            <div class="form-group row form-btn">
+              <%= f.submit class: "btn btn-outline-light btn-lg"%>
+            </div>
+          </div>
+        <% end %>
+      </div>
+        <%= link_to 'Cancel and return to articles listing', articles_path, class: "back" %>
+    </div>
+  </div>
+</div>
