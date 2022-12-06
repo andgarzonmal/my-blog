@@ -12,9 +12,15 @@
 
   <body class="d-flex flex-column">
     <%= render 'layouts/navigation'%>
-    <% flash.each do |name, msg|%>
-      <%= msg %>
-    <% end %>
+    <div class="container">
+      <% flash.each do |name, msg|%>
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+          <%= msg %>
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+      <% end %>
+    </div>
     <%= yield %>
+    <%= render 'layouts/footer'%>
   </body>
 </html>
