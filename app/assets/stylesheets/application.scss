@@ -6,7 +6,7 @@ body {
 }
 
 .navbar {
-  background-color: black !important;
+  background-color: #47525d !important;
 }
 
 .nav-link {
@@ -43,3 +43,21 @@ body {
   flex-shrink: none;
 }
 
+.form-btn {
+  width: 200px;
+}
+
+.btn-conta {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  margin-top: 25px;
+}
+
+.back {
+  text-align: center;
+} 
+
+.card-text p {
+  text-align: left;
+}
